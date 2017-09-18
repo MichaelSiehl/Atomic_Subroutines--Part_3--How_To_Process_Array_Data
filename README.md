@@ -90,7 +90,7 @@ type (OOOPimsc_DontUse2), public, parameter :: OOOPimscEnum_ArrayElementSyncStat
      = OOOPimsc_DontUse2 (1000000,2000000,3000000, 4000000)
 ```
 
-- The OOOPimsc_adtImageStatus_CA type definition with the mA_atomic_intImageActivityFlag99 member for synchronization of the array transfer as a whole, and the mA_atomic_intTestArray member for the array data transfer and synchronization of each distinct array element resp. (these atomic members are the remote communication channels):
+- The OOOPimsc_adtImageStatus_CA type definition with the mA_atomic_intImageActivityFlag99 member for synchronization of the array transfer as a whole, and the mA_atomic_intTestArray member for the array data transfer and synchronization of each distinct array element resp. (Each single array element of these atomic members acts as a distinct remote communication channel):
 
 ```fortran
 type, public :: OOOPimsc_adtImageStatus_CA
