@@ -51,3 +51,47 @@ end program Main
 ```
 
 # - The OOOPimsc_admImageStatus_CA module
+The remote transfer of array data through atomic subroutines requires two kinds of synchronizations: firstly, we must synchronize the array transfer as a whole (at several times) and secondly, we must synchronize the remote transfer of each distinct array element resp. (which is non-blocking and less demanding than it may sound). Thus, we need two distinct synchronization primitives (i.e. two distinct customized synchronization procedures) here.<br />
+The OOOPimsc_admImageStatus_CA.f90 source code file (module) does contain all the required codes to achieve the remote array transfer atomically in a safe way. The parallel logic codes are contained in two procedures near the end of the source code file (see below).<br />
+<br />
+The relevant codes are:<br />
+
+- The OOOPimscEnum_ImageActivityFlag integer-based enumeration for synchronization of the array transfer as a whole:
+
+```fortran
+!***  ImageActivityFlag:
+type, private :: OOOPimsc_DontUse1
+  integer(kind=OOOGglob_kint) :: Enum_StepWidth ! = 1000000
+  integer(kind=OOOGglob_kint) :: InitialWaiting ! = 2000000
+  integer(kind=OOOGglob_kint) :: TeamManager ! = 3000000
+  integer(kind=OOOGglob_kint) :: TeamMember ! = 4000000
+  integer(kind=OOOGglob_kint) :: ExecutionFinished ! = 5000000
+  integer(kind=OOOGglob_kint) :: InitiateTestArrayTransfer ! = 12000000
+  integer(kind=OOOGglob_kint) :: WaitForTestArrayTransfer ! = 13000000
+  integer(kind=OOOGglob_kint) :: ResetTheTestArray ! = 14000000
+  integer(kind=OOOGglob_kint) :: LocalTestArrayResetDone ! = 15000000
+  integer(kind=OOOGglob_kint) :: TestArrayRemoteTransferDone ! = 16000000
+  integer(kind=OOOGglob_kint) :: Enum_MaxValue ! = 17000000
+end type OOOPimsc_DontUse1
+!
+type (OOOPimsc_DontUse1), public, parameter :: OOOPimscEnum_ImageActivityFlag &
+     = OOOPimsc_DontUse1 (1000000,2000000,3000000,4000000,5000000, &
+                           12000000, 13000000, 14000000, 15000000, 16000000, 17000000)
+!**************************
+```
+
+- The OOOPimscEnum_ArrayElementSyncStat integer-based enumeration for synchronization of each distinct array element resp.:
+
+```fortran
+!***  ArrayElementSyncStat:
+type, private :: OOOPimsc_DontUse2
+  integer(kind=OOOGglob_kint) :: Enum_StepWidth ! = 1000000
+  integer(kind=OOOGglob_kint) :: ArrayElementNotSynchronizedYet ! = 2000000
+  integer(kind=OOOGglob_kint) :: ArrayElementSynchronized ! = 3000000
+  integer(kind=OOOGglob_kint) :: Enum_MaxValue ! = 4000000
+end type OOOPimsc_DontUse2
+!
+type (OOOPimsc_DontUse2), public, parameter :: OOOPimscEnum_ArrayElementSyncStat &
+     = OOOPimsc_DontUse2 (1000000,2000000,3000000, 4000000)
+```
+
