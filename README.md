@@ -56,7 +56,7 @@ The OOOPimsc_admImageStatus_CA.f90 source code file (module) does contain all th
 <br />
 The relevant codes are:<br />
 
-- The OOOPimscEnum_ImageActivityFlag integer-based enumeration for synchronization of the array transfer as a whole:
+- The OOOPimscEnum_ImageActivityFlag integer-based enumeration for synchronization of the array transfer as a whole (only the last few enumeration values are required with the example program yet):
 
 ```fortran
 !***  ImageActivityFlag:
