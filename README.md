@@ -62,14 +62,9 @@ The relevant codes are:<br />
 !***  ImageActivityFlag:
 type, private :: OOOPimsc_DontUse1
   integer(kind=OOOGglob_kint) :: Enum_StepWidth ! = 1000000
-  integer(kind=OOOGglob_kint) :: InitialWaiting ! = 2000000
-  integer(kind=OOOGglob_kint) :: TeamManager ! = 3000000
-  integer(kind=OOOGglob_kint) :: TeamMember ! = 4000000
-  integer(kind=OOOGglob_kint) :: ExecutionFinished ! = 5000000
-  integer(kind=OOOGglob_kint) :: InitiateTestArrayTransfer ! = 12000000
+  .
   integer(kind=OOOGglob_kint) :: WaitForTestArrayTransfer ! = 13000000
-  integer(kind=OOOGglob_kint) :: ResetTheTestArray ! = 14000000
-  integer(kind=OOOGglob_kint) :: LocalTestArrayResetDone ! = 15000000
+  .
   integer(kind=OOOGglob_kint) :: TestArrayRemoteTransferDone ! = 16000000
   integer(kind=OOOGglob_kint) :: Enum_MaxValue ! = 17000000
 end type OOOPimsc_DontUse1
