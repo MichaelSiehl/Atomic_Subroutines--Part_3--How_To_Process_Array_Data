@@ -96,14 +96,13 @@ type (OOOPimsc_DontUse2), public, parameter :: OOOPimscEnum_ArrayElementSyncStat
 type, public :: OOOPimsc_adtImageStatus_CA
   private
   !*****
-  integer(atomic_int_kind), dimension (1:OOOGglob_NumImages_UpperBound, 1:2) :: &
-                  mA_atomic_intImageActivityFlag99 = OOOPimscEnum_ImageActivityFlag % InitialWaiting
+  integer(atomic_int_kind), dimension (1:OOOGglob_NumImages_UpperBound, 1:2) :: mA_atomic_intImageActivityFlag99
   !*****
-  integer(atomic_int_kind), dimension (1:OOOGglob_NumImages_UpperBound) :: mA_atomic_intImageSyncMemoryCount99 = 0
+  ...
   !*****
   integer(atomic_int_kind), dimension (1:5) :: mA_atomic_intTestArray
   !*****
-  type (OOOEerroc_colError) :: m_UUerrocError ! error collection
+  ...
   !
 end type OOOPimsc_adtImageStatus_CA
 ```
